@@ -47,15 +47,23 @@ We evaluate semantic error detection performance using the following metrics:
 If you use NL2SQL-BUGs in your research, please cite our paper:
 
 ```bibtex
-@misc{liu2025nl2sqlbugsbenchmarkdetectingsemantic,
-      title={NL2SQL-BUGs: A Benchmark for Detecting Semantic Errors in NL2SQL Translation}, 
-      author={Xinyu Liu and Shuyu Shen and Boyan Li and Nan Tang and Yuyu Luo},
-      year={2025},
-      eprint={2503.11984},
-      archivePrefix={arXiv},
-      primaryClass={cs.DB},
-      url={https://arxiv.org/abs/2503.11984}, 
+@inproceedings{10.1145/3711896.3737427,
+author = {Liu, Xinyu and Shen, Shuyu and Li, Boyan and Tang, Nan and Luo, Yuyu},
+title = {NL2SQL-BUGs: A Benchmark for Detecting Semantic Errors in NL2SQL Translation},
+year = {2025},
+isbn = {9798400714542},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3711896.3737427},
+doi = {10.1145/3711896.3737427},
+booktitle = {Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2},
+pages = {5662–5673},
+numpages = {12},
+keywords = {interface for databases, large language model, text-to-SQL},
+location = {Toronto ON, Canada},
+series = {KDD '25}
 }
+
 ```
 ## 📬 Contact
 
