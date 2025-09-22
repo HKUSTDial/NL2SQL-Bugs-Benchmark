@@ -1,0 +1,83 @@
+"""
+You are a SQL expert. Your task is to evaluate whether a given SQL query correctly aligns with the natural language query (NL), evidence, and database schema. Additionally, if the SQL query is wrong, you need to identify the specific error type and subtype.
+
+When analyzing SQL errors, please categorize them according to the following taxonomy:
+### Error Types Description:
+1. Attribute-Related Errors:
+- Attribute Mismatch: Wrong attribute selection
+- Attribute Redundancy: Unnecessary attributes included
+- Attribute Missing: Required attributes not included
+
+2. Table-Related Errors:
+- Table Mismatch: Wrong table selection
+- Table Redundancy: Unnecessary tables included
+- Table Missing: Required tables not included
+- Join Condition Mismatch: The join condition between tables is incorrect, If the [attribute][operator][attribute] is incorrectly chosen,the error should be classified as a "Join Condition Mismatch" rather than an "Attribute Mismatch."
+- Join Type Mismatch: Wrong join type (e.g., LEFT JOIN when INNER JOIN needed)
+
+3. Value-Related Errors:
+- Value Mismatch: Incorrect values in conditions
+- Data Format Mismatch: Wrong data type or format
+
+4. Operator-Related Errors:
+- Comparison Operator Mismatch: Wrong operator (e.g., = when != needed) in comparison condition.
+- Logical Operator Mismatch: The logical operator (e.g., AND when OR needed) or the logical operator precedence may be wrong(e.g., (A AND B) OR C is interpreted as (A OR C) AND (B OR C) instead of (A AND B) OR C).
+
+5. Condition-Related Errors:
+- Explicit Condition Missing: Required conditions not included
+- Explicit Condition Mismatch: Wrong conditions (condition= [attribute] [operator] [value] only two of them are wrong, if only one is wrong, it is should be attribute or value or operator error)
+- Explicit Condition Redundancy: Unnecessary conditions
+- Implicit Condition Missing: Missing implicit conditions (e.g., IS NOT NULL)
+
+6. Function-Related Errors:
+- Aggregate Functions: Incorrect use of SUM, AVG, etc.
+- Window Functions: Incorrect use of OVER, PARTITION BY, etc.
+- Date/Time Functions: Incorrect use of JULIANDAY, strftime, etc.
+- Conversion Functions: Incorrect use of CAST, etc.
+- Math Functions: Incorrect use of ROUND, etc.
+- String Functions: Incorrect use of SUBSTR, etc.
+- Conditional Functions: Incorrect use of IIF, CASE WHEN, etc.
+
+7. Clause-Related Errors:
+- Clause Missing: Required clauses not included. (e.g., GROUP BY, ORDER BY, HAVING)
+- Clause Redundancy: Unnecessary clauses included. (e.g., GROUP BY, ORDER BY, HAVING)
+
+8. Subquery-Related Errors:
+- Subquery Missing: Required subquery not included.
+- Subquery Mismatch: Incorrect subquery logic
+- Partial Query: The error SQL query is a partial query that contributes to the cor SQL query.
+
+9. Other Errors:
+- ASC/DESC: Incorrect sorting order
+- DISTINCT: Incorrect use of DISTINCT
+- Other: Major logical errors requiring complete rewrite
+
+### Evaluation Criteria:
+    1. Semantic Error Detection: Indicate if the SQL query is "True" (correct) or "False" (contains errors).
+    2. Semantic Error Type Detection: If the query is incorrect, specify the main error type (e.g., Table-Related Errors) and subtype (e.g., Table Mismatch). If there are multiple errors, return all the errors in the "error_info" list.
+    3. Provide a clear explanation for your decision, referencing the NL query, evidence, and database schema as needed.
+
+### Input:
+    - Database schema: {schema}
+    - Natural language query: {nl}
+    - Evidence: {evidence}
+    - SQL query: {sql}
+
+### Output:
+    Please output the result in the following format and ensure that error_types strictly adhere to the definitions in the taxonomy:
+    {{
+        "reasoning": "<reasoning>",
+        "result": "<True or False>",
+        "error_types": [
+            {{
+                "error_type": "<main error type>",
+                "sub_error_type": "<sub error type>"
+            }},
+            {{
+                "error_type": "<main error type>",
+                "sub_error_type": "<sub error type>"
+            }}
+        ]
+    }}
+
+    """

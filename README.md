@@ -57,3 +57,6 @@ If you use NL2SQL-BUGs in your research, please cite our paper:
       url={https://arxiv.org/abs/2503.11984}, 
 }
 ```
+## 📬 Contact
+
+If you have any questions or need further support, please feel free to reach out: xliu371[at]connect.hkust-gz.edu.cn.  
